@@ -3,13 +3,12 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:05
  * @LastEditors: jml
- * @LastEditTime: 2020-12-30 17:28:46
+ * @LastEditTime: 2020-12-31 11:57:31
  */
 
-import check from "./check";
-import base from "./base";
-const { isNumber, isFunction } = check;
-const { numberFormat } = base;
+const { isNumber, isFunction } = require('./check');
+const {numberFormat } = require('./base');
+
 
 /**
  * 判断是否为合法数字，是=>调用callbackTrue ,否=>调用callbackFalse
@@ -26,7 +25,8 @@ const _moneyFunctional = (num, callbackTrue = "", callbackFalse = "") => {
   }
 };
 
-export default {
+
+module.exports = {
   /**
    * 将分格式化为元，保留两位小数
    * @param {Number | String} num 金额(分)

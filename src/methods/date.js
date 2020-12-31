@@ -3,13 +3,12 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:17
  * @LastEditors: jml
- * @LastEditTime: 2020-12-30 17:27:53
+ * @LastEditTime: 2020-12-31 11:56:48
  */
 
-import check from "./check";
-const { isNumber, isDate } = check;
+const { isNumber, isDate } = require('./check');
 
-export default {
+module.exports = {
   /**
    * 格式化时间
    * @param {Number | String | Date} date 需格式化的时间(传入时间戳单位为秒)

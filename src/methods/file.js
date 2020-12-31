@@ -2,12 +2,13 @@
  * @Description: 文件相关处理
  * @Date: 2020-12-30 15:03:13
  * @LastEditors: jml
- * @LastEditTime: 2020-12-30 17:28:06
+ * @LastEditTime: 2020-12-31 17:03:20
  */
 
 const axios = require("axios");
+const QRCode = require("QRCode");
 
-export default {
+module.exports = {
   /**
    * base64转为Blob
    * @param {String} base64
@@ -83,5 +84,20 @@ export default {
       ...options,
     });
     return data;
+  },
+
+  /**
+   * 将内容转为二维码图片
+   * @param {any} content
+   */
+  contentToQrcodeUrl: async (content) => {
+    const canvas = document.createElement("canvas");
+    const backUrl = await new Promise((resolve) => {
+      QRCode.toCanvas(canvas, content, (error) => {
+        if (error) console.error(error);
+        resolve(canvas.toDataURL("image/png", 1));
+      });
+    });
+    return backUrl;
   },
 };

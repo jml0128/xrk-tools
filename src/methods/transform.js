@@ -3,11 +3,10 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:58
  * @LastEditors: jml
- * @LastEditTime: 2020-12-30 17:28:57
+ * @LastEditTime: 2020-12-31 11:57:48
  */
 
-export default {
-  // export default {
+module.exports = {
   /**
    * 将字符串指定位置替换为指定字符
    * @param {*} str 需替换的字符串
