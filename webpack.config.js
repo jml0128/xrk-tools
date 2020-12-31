@@ -2,7 +2,7 @@
  * @Author: jml
  * @Date: 2020-12-30 10:02:16
  * @LastEditors: jml
- * @LastEditTime: 2020-12-30 17:19:47
+ * @LastEditTime: 2020-12-31 17:01:24
  */
 
 const path = require("path");
@@ -31,6 +31,7 @@ module.exports = {
   },
   externals: {
     axios: "axios",
+    QRCode: "QRCode",
   },
   devServer: {
     inline: true,
