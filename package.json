@@ -1,37 +1,16 @@
 {
-  "_from": "xrk-tools-test",
-  "_id": "xrk-tools-test@1.0.0",
-  "_inBundle": false,
-  "_integrity": "sha1-YIs9RWUz70bYsaz6xzrkuCkgOzs=",
-  "_location": "/xrk-tools-test",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "xrk-tools-test",
-    "name": "xrk-tools-test",
-    "escapedName": "xrk-tools-test",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npm.taobao.org/xrk-tools-test/download/xrk-tools-test-1.0.0.tgz",
-  "_shasum": "608b3d456533ef46d8b1acfac73ae4b829203b3b",
-  "_spec": "xrk-tools-test",
-  "_where": "C:\\Users\\居民楼\\Desktop\\c\\t",
-  "author": {
-    "name": "jml"
-  },
-  "bugs": {
-    "url": "https://github.com/jml0128/xrk-tools/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
+  "name": "xrk-tools",
+  "version": "1.0.1",
   "description": "平台通用工具",
+  "main": "./dist/main.js",
+  "repository": "",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jml",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
@@ -41,19 +20,5 @@
     "typescript": "^2.9.2",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0"
-  },
-  "homepage": "https://github.com/jml0128/xrk-tools#readme",
-  "license": "ISC",
-  "main": "./src/index.js",
-  "name": "xrk-tools-test",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jml0128/xrk-tools.git"
-  },
-  "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "1.0.1"
+  }
 }
