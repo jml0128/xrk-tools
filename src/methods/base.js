@@ -3,23 +3,22 @@
  * @Author: jml
  * @Date: 2020-12-30 10:17:46
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 16:50:44
+ * @LastEditTime: 2021-01-04 18:01:38
  */
 
 const { isNumber, isObject, isMap, isSet } = require("./check");
 const { isArray } = Array;
 
-/**
- * 判断是否为数组、对象、map、set其中一种
- * @param {any} content
- */
 const isSepcialObject = (content) => {
   return (
     isArray(content) || isObject(content) || isMap(content) || isSet(content)
   );
 };
 
-module.exports = {
+/**
+ * 通用基础方法
+ */
+const base = {
   /**
    * 格式化数值
    * @param {Number|String} num 数字
@@ -69,7 +68,7 @@ module.exports = {
         for (const key in content) {
           if (Object.hasOwnProperty.call(content, key)) {
             if (isSepcialObject(content[key])) {
-              res[key] = deepClone(content[key]);
+              res[key] = base.deepClone(content[key]);
             } else {
               res[key] = content[key];
             }
@@ -77,11 +76,11 @@ module.exports = {
         }
       } else if (type === "Map") {
         content.forEach((value, key) => {
-          res.set(key, isSepcialObject(value) ? deepClone(value) : value);
+          res.set(key, isSepcialObject(value) ? base.deepClone(value) : value);
         });
       } else if (type === "Set") {
         content.forEach((value) => {
-          res.add(isSepcialObject(value) ? deepClone(value) : value);
+          res.add(isSepcialObject(value) ? base.deepClone(value) : value);
         });
       }
       return res;
@@ -89,3 +88,5 @@ module.exports = {
     return content;
   },
 };
+
+module.exports = base;

@@ -3,14 +3,17 @@
  * @Author: jml
  * @Date: 2020-12-30 10:25:09
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 16:46:49
+ * @LastEditTime: 2021-01-04 17:59:48
  */
 
 const _getType = (param) => {
   return Object.prototype.toString.call(param);
 };
 
-module.exports = {
+/**
+ * 数据检查
+ */
+const check = {
   /**
    * 判断是否为数字 (数字字符串也是数字，例如'23'、'123.213')
    * @param {String | Number} num
@@ -97,3 +100,5 @@ module.exports = {
     return _getType(param) === "[object Boolean]";
   },
 };
+
+module.exports = check;

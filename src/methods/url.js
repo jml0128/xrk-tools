@@ -3,12 +3,12 @@
  * @Author: jml
  * @Date: 2020-12-30 10:17:46
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 17:12:25
+ * @LastEditTime: 2021-01-04 16:43:01
  */
 
 const { isNumber, isObject, isString, isBoolean } = require("./check");
 
-module.exports = {
+const url = {
   /**
    * 丢弃对象所有非Number String Boolean的值，并返回序列化字符串 例如 ?key=value&key1=value1&key2=value2
    * @param {Object} query 需处理的对象
@@ -30,3 +30,5 @@ module.exports = {
     return `?${_dealQueryArr.join("&")}`;
   },
 };
+
+module.exports = url;

@@ -2,13 +2,16 @@
  * @Description: 文件相关处理
  * @Date: 2020-12-30 15:03:13
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 17:03:20
+ * @LastEditTime: 2021-01-04 18:00:11
  */
 
 const axios = require("axios");
-const QRCode = require("QRCode");
+const qrcode = require("qrcode");
 
-module.exports = {
+/**
+ * 处理文件
+ */
+const file = {
   /**
    * base64转为Blob
    * @param {String} base64
@@ -28,20 +31,19 @@ module.exports = {
    * Blob转为base64
    * @param {Blob} blob
    */
-  blobToDataURI: async (blob) => {
-    const dataURI = await new Promise((resolve) => {
+  blobToDataURI: (blob) => {
+    return new Promise((resolve) => {
       let reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onload = (e) => {
         resolve(e.target.result);
       };
     });
-    return dataURI;
   },
 
   /**
    * 将img标签转为base64
-   * @param {Image} imgElement img标签
+   * @param {HTMLImageElement} imgElement img标签
    */
   imgElement2Base64: (imgElement) => {
     const canvas = document.createElement("canvas");
@@ -56,16 +58,15 @@ module.exports = {
    * 将img网络资源转为base64
    * @param {String} imgUrl img地址
    */
-  imgUrl2Base64: async (imgUrl) => {
-    const base64 = await new Promise((resolve) => {
+  imgUrl2Base64: (imgUrl) => {
+    return new Promise((resolve) => {
       const img = new Image();
       img.setAttribute("crossOrigin", "anonymous");
       img.src = imgUrl;
       img.onload = () => {
-        resolve(this.imgElement2Base64.call(this, img));
+        resolve(file.imgElement2Base64(img));
       };
     });
-    return base64;
   },
 
   /**
@@ -74,30 +75,36 @@ module.exports = {
    * @param {String} responseType 响应类型(默认blob)
    * @param {*} options
    */
-  getNetFile: async (
+  getNetFile: (
     url,
     responseType = "blob",
     options = { data: { noInterceptor: true } }
   ) => {
-    const { data } = await axios.get(url, {
-      responseType,
-      ...options,
+    return new Promise((resolve) => {
+      axios
+        .get(url, {
+          responseType,
+          ...options,
+        })
+        .then(({ data }) => {
+          resolve(data);
+        });
     });
-    return data;
   },
 
   /**
    * 将内容转为二维码图片
    * @param {any} content
    */
-  contentToQrcodeUrl: async (content) => {
+  contentToQrcodeUrl: (content) => {
     const canvas = document.createElement("canvas");
-    const backUrl = await new Promise((resolve) => {
-      QRCode.toCanvas(canvas, content, (error) => {
+    return new Promise((resolve) => {
+      qrcode.toCanvas(canvas, content, (error) => {
         if (error) console.error(error);
         resolve(canvas.toDataURL("image/png", 1));
       });
     });
-    return backUrl;
   },
 };
+
+module.exports = file;

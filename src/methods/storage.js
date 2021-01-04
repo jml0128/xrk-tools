@@ -3,12 +3,15 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:58
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 16:18:50
+ * @LastEditTime: 2021-01-04 18:00:42
  */
 
 const { isFalseValue } = require("./check");
 
-module.exports = {
+/**
+ * 处理本地数据
+ */
+const customStorage = {
   /**
    * 本地数据存储
    * @param {String} key 存储KEY
@@ -42,3 +45,5 @@ module.exports = {
     }
   },
 };
+
+module.exports = customStorage;

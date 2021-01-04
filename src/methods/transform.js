@@ -3,10 +3,13 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:58
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 11:57:48
+ * @LastEditTime: 2021-01-04 18:00:51
  */
 
-module.exports = {
+/**
+ * 处理字符串
+ */
+const transform = {
   /**
    * 将字符串指定位置替换为指定字符
    * @param {*} str 需替换的字符串
@@ -23,3 +26,5 @@ module.exports = {
     );
   },
 };
+
+module.exports = transform;

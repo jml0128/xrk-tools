@@ -3,19 +3,13 @@
  * @Author: jml
  * @Date: 2020-12-30 10:15:05
  * @LastEditors: jml
- * @LastEditTime: 2020-12-31 11:57:31
+ * @LastEditTime: 2021-01-04 18:00:32
  */
 
-const { isNumber, isFunction } = require('./check');
-const {numberFormat } = require('./base');
+const { isNumber, isFunction } = require("./check");
+const { numberFormat } = require("./base");
 
 
-/**
- * 判断是否为合法数字，是=>调用callbackTrue ,否=>调用callbackFalse
- * @param {Number} num 数字
- * @param {Function | String | Number} callbackTrue
- * @param {Function | String | Number} callbackFalse
- */
 const _moneyFunctional = (num, callbackTrue = "", callbackFalse = "") => {
   if (isNumber(num)) {
     return isFunction(callbackTrue) ? callbackTrue() : callbackTrue;
@@ -25,8 +19,10 @@ const _moneyFunctional = (num, callbackTrue = "", callbackFalse = "") => {
   }
 };
 
-
-module.exports = {
+/**
+ * 处理金额
+ */
+const money = {
   /**
    * 将分格式化为元，保留两位小数
    * @param {Number | String} num 金额(分)
@@ -62,3 +58,5 @@ module.exports = {
     );
   },
 };
+
+module.exports = money;
